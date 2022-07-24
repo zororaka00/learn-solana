@@ -1,0 +1,17 @@
+{
+  "name": "contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "bundle": "solang ./myname.sol --target solana --output build",
+    "deploy": "node ./myname.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@solana/solidity": "^0.0.20",
+    "@solana/web3.js": "^1.50.0"
+  }
+}
