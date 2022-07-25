@@ -1,6 +1,7 @@
 const solanaWeb3 = require('@solana/web3.js'),
     bip39 = require('bip39'),
-    ed25519HdKey = require('ed25519-hd-key');
+    ed25519HdKey = require('ed25519-hd-key'),
+    bs58 = require('bs58');
 
 const generatedMnemonic = bip39.generateMnemonic(),
     seedPhrase = bip39.mnemonicToSeedSync(generatedMnemonic).slice(0, 32),
@@ -11,6 +12,7 @@ const generatedMnemonic = bip39.generateMnemonic(),
 
 console.log(generatedMnemonic);
 console.log(seedKeypair.secretKey);
+console.log(bs58.encode(seedKeypair.secretKey)); // convert to base58
 console.log(seedKeypair.publicKey.toString()); // Address
 console.log(seedKeypair.publicKey.toBase58()); // Address
 
@@ -18,6 +20,7 @@ console.log('------------------------------------------------------------');
 
 const account = solanaWeb3.Keypair.generate();
 console.log(account.secretKey);
+console.log(bs58.encode(account.secretKey)); // convert to base58
 console.log(account.publicKey.toString());
 console.log(account.publicKey.toBase58());
 
