@@ -10,7 +10,7 @@ const BUNDLE_SO = readFileSync('./build/bundle.so')
     const connection = new Connection(
         // works only for localhost at the time of writing
         // see https://github.com/solana-labs/solana-solidity.js/issues/8
-        'http://localhost:8899', //"https://api.devnet.solana.com",
+        'http://localhost:8899',// "https://api.devnet.solana.com",
         'confirmed'
     );
 
@@ -21,6 +21,9 @@ const BUNDLE_SO = readFileSync('./build/bundle.so')
     console.log('balance: ', await connection.getBalance(payer.publicKey));
     const program = Keypair.generate();
     const storage = Keypair.generate();
+    console.log('payer: ', payer.publicKey.toBase58());
+    console.log('program: ', program.publicKey.toBase58());
+    console.log('storage: ', storage.publicKey.toBase58());
 
     const contract = new Contract(connection, program.publicKey, storage.publicKey, myname_ABI, payer);
 
